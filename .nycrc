@@ -1,0 +1,26 @@
+{
+    "check-coverage": true,
+    "statements": 0,
+    "branches": 0,
+    "functions": 0,
+    "lines": 0,
+    "include": [
+        "build/src/**/*.+(js|jsx)"
+    ],
+    "exclude": [
+        "build/src/**/*.spec.+(js|jsx)"
+    ],
+    "reporter": [
+        "html",
+        "text",
+        "text-summary"
+    ],
+    "require": [],
+    "extension": [
+        ".js",
+        ".jsx"
+    ],
+    "cache": false,
+    "all": false,
+    "report-dir": "./coverage"
+}

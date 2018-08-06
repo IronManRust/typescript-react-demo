@@ -1,0 +1,6 @@
+--colors
+--reporter spec
+--require ignore-styles
+--require mock-local-storage
+--require mocha.conf.js
+build/src/**/*.spec.+(js|jsx)

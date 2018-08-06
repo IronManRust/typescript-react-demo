@@ -1,0 +1,6 @@
+./dist/**/*
+./doc/**/*
+./build/**/*
+./coverage/**/*
+./.nyc_output/**/*
+./node_modules/**/*
