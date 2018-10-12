@@ -14,7 +14,7 @@
         "filecheck": "echo \"Type Check (JS -> TS)\" | chalk cyan && fsls ./src/**/*.js | chalk yellow && echo \"Type Check (JSX -> TSX)\" | chalk cyan && fsls ./src/**/*.jsx | chalk yellow && echo \"Type Check (CSS -> SCSS)\" | chalk cyan && fsls ./src/**/*.css | chalk yellow",
         "testcheck": "echo \"Test Check\" | chalk cyan && echo. && node mocha.check.ts && echo.",
         "lint": "echo \"Style Check (JS / JSX)\" | chalk cyan && echo. && eslint ./*.js ./*.jsx ./src/**/*.js ./src/**/*.jsx && echo. && echo \"Style Check (TS / TSX)\" | chalk cyan && echo. && tslint --project ./tsconfig.json ./*.ts ./*.tsx ./src/**/*.ts ./src/**/*.tsx && echo. && echo \"Style Check (JSON)\" | chalk cyan && echo. && jsonlint-cli ./*.json ./src/**/*.json && echo. && echo \"Style Check (SCSS)\" | chalk cyan && echo. && sass-lint ./*.scss ./src/**/*.scss --verbose && echo. && echo \"Style Check (MD)\" | chalk cyan && echo. && markdownlint ./README.md ./src/ && echo. && echo \"Style Check (HTM / HTML / XHTML)\" | chalk cyan && echo. && htmlhint --config .htmlhintrc ./src/**/*.{htm,html,xhtml} && echo.",
-        "doc": "echo \"Generating Documentation\" | chalk cyan && echo. && typedoc --out ./doc ./src | chalk red && echo.",
+        "doc": "echo \"Generating Documentation\" | chalk cyan && echo. && typedoc --options typedoc.json | chalk red && echo.",
         "configure-test:prep": "better-npm-run configure-test:prep",
         "configure-test:exec": "better-npm-run configure-test:exec",
         "test:prep": "echo \"Preparing Tests\" | chalk cyan && echo. && rimraf ./build && rimraf ./coverage && rimraf ./.nyc_output && tsc --project ./tsconfig.json && copyfiles -e src/**/*.ts -e src/**/*.tsx src/**/*.* build && echo.",

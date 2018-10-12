@@ -1,0 +1,23 @@
+{
+    "name": "TypeScript React Demo",
+    "readme": "./README.md",
+    "includes": "src",
+    "out": "doc",
+    "theme": "default",
+    "target": "ES6",
+    "mode": "modules",
+    "module": "commonjs",
+    "plugin": "none",
+    "includeDeclarations": "true",
+    "excludeExternals": "false",
+    "excludePrivate": "false",
+    "excludeProtected": "false",
+    "stripInternal": "false",
+    "experimentalDecorators": "true",
+    "emitDecoratorMetadata": "true",
+    "preserveConstEnums": "true",
+    "ignoreCompilerErrors": "false",
+    "suppressExcessPropertyErrors": "false",
+    "suppressImplicitAnyIndexErrors": "false",
+    "hideGenerator": "true"
+}

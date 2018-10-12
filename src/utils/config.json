@@ -1,0 +1,17 @@
+{
+    "local": {
+        "environment": "Local"
+    },
+    "development": {
+        "environment": "Development"
+    },
+    "qa": {
+        "environment": "QA"
+    },
+    "stage": {
+        "environment": "Stage"
+    },
+    "production": {
+        "environment": "Production"
+    }
+}
