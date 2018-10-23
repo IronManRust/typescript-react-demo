@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "This is a reference demo, written in TypeScript, that illustrates features and design patterns applicable to a more substantial React-based application.",
     "scripts": {
-        "clean": "echo \"Cleaning Output Folders\" | chalk cyan && echo. && rimraf ./dist && rimraf ./doc && rimraf ./build && rimraf ./coverage && rimraf ./.nyc_output && echo.",
+        "clean": "echo \"Cleaning Output Folders\" | chalk cyan && rimraf ./dist && rimraf ./doc && rimraf ./build && rimraf ./coverage && rimraf ./.nyc_output",
         "watch": "npm-watch",
         "refresh-local-bundle": "better-npm-run refresh-local-bundle",
         "build:local": "better-npm-run build:local",
@@ -12,13 +12,13 @@
         "build:stage": "better-npm-run build:stage",
         "build:production": "better-npm-run build:production",
         "filecheck": "echo \"Type Check (JS -> TS)\" | chalk cyan && fsls ./src/**/*.js | chalk yellow && echo \"Type Check (JSX -> TSX)\" | chalk cyan && fsls ./src/**/*.jsx | chalk yellow && echo \"Type Check (CSS -> SCSS)\" | chalk cyan && fsls ./src/**/*.css | chalk yellow",
-        "testcheck": "echo \"Test Check\" | chalk cyan && echo. && node mocha.check.ts && echo.",
-        "lint": "echo \"Style Check (JS / JSX)\" | chalk cyan && echo. && eslint ./*.js ./*.jsx ./src/**/*.js ./src/**/*.jsx && echo. && echo \"Style Check (TS / TSX)\" | chalk cyan && echo. && tslint --project ./tsconfig.json ./*.ts ./*.tsx ./src/**/*.ts ./src/**/*.tsx && echo. && echo \"Style Check (JSON)\" | chalk cyan && echo. && jsonlint-cli ./*.json ./src/**/*.json && echo. && echo \"Style Check (SCSS)\" | chalk cyan && echo. && sass-lint ./*.scss ./src/**/*.scss --verbose && echo. && echo \"Style Check (MD)\" | chalk cyan && echo. && markdownlint ./README.md ./src/ && echo. && echo \"Style Check (HTM / HTML / XHTML)\" | chalk cyan && echo. && htmlhint --config .htmlhintrc ./src/**/*.{htm,html,xhtml} && echo.",
-        "doc": "echo \"Generating Documentation\" | chalk cyan && echo. && typedoc --options typedoc.json | chalk red && echo.",
+        "testcheck": "echo \"Test Check\" | chalk cyan && node mocha.check.ts",
+        "lint": "echo \"Style Check (JS / JSX)\" | chalk cyan && eslint ./*.js ./*.jsx ./src/**/*.js ./src/**/*.jsx && echo \"Style Check (TS / TSX)\" | chalk cyan && tslint --project ./tsconfig.json ./*.ts ./*.tsx ./src/**/*.ts ./src/**/*.tsx && echo \"Style Check (JSON)\" | chalk cyan && jsonlint-cli ./*.json ./src/**/*.json && echo \"Style Check (SCSS)\" | chalk cyan && sass-lint ./*.scss ./src/**/*.scss --verbose && echo \"Style Check (MD)\" | chalk cyan && markdownlint ./README.md ./src/ && echo \"Style Check (HTM / HTML / XHTML)\" | chalk cyan && htmlhint --config .htmlhintrc ./src/**/*.{htm,html,xhtml}",
+        "doc": "echo \"Generating Documentation\" | chalk cyan && typedoc --options typedoc.json | chalk red",
         "configure-test:prep": "better-npm-run configure-test:prep",
         "configure-test:exec": "better-npm-run configure-test:exec",
-        "test:prep": "echo \"Preparing Tests\" | chalk cyan && echo. && rimraf ./build && rimraf ./coverage && rimraf ./.nyc_output && tsc --project ./tsconfig.json && copyfiles -e src/**/*.ts -e src/**/*.tsx src/**/*.* build && echo.",
-        "test:exec": "echo \"Executing Tests\" | chalk cyan && echo. && rimraf ./build && rimraf ./coverage && rimraf ./.nyc_output && tsc --project ./tsconfig.json && copyfiles -e src/**/*.ts -e src/**/*.tsx src/**/*.* build && echo. && nyc mocha --opts mocha.opts && nyc report && echo."
+        "test:prep": "echo \"Preparing Tests\" | chalk cyan && rimraf ./build && rimraf ./coverage && rimraf ./.nyc_output && tsc --project ./tsconfig.json && copyfiles -e src/**/*.ts -e src/**/*.tsx src/**/*.* build",
+        "test:exec": "echo \"Executing Tests\" | chalk cyan && rimraf ./build && rimraf ./coverage && rimraf ./.nyc_output && tsc --project ./tsconfig.json && copyfiles -e src/**/*.ts -e src/**/*.tsx src/**/*.* build && nyc mocha --opts mocha.opts && nyc report"
     },
     "betterScripts": {
         "refresh-local-bundle": {
@@ -40,31 +40,31 @@
             }
         },
         "build:local": {
-            "command": "npm run filecheck && npm run testcheck && npm run lint && echo \"Building Application (Local)\" | chalk cyan && echo. && webpack --display-modules --config webpack.config.debug.js && echo. && npm run doc && npm run test:exec",
+            "command": "npm run filecheck && npm run testcheck && npm run lint && echo \"Building Application (Local)\" | chalk cyan && webpack --display-modules --config webpack.config.debug.js && npm run doc && npm run test:exec",
             "env": {
                 "NODE_ENV": "local"
             }
         },
         "build:development": {
-            "command": "npm run filecheck && npm run testcheck && npm run lint && echo \"Building Application (Development)\" | chalk cyan && echo. && webpack --display-modules --config webpack.config.release.js && echo. && npm run doc && npm run test:exec",
+            "command": "npm run filecheck && npm run testcheck && npm run lint && echo \"Building Application (Development)\" | chalk cyan && webpack --display-modules --config webpack.config.release.js && npm run doc && npm run test:exec",
             "env": {
                 "NODE_ENV": "development"
             }
         },
         "build:qa": {
-            "command": "npm run filecheck && npm run testcheck && npm run lint && echo \"Building Application (QA)\" | chalk cyan && echo. && webpack --display-modules --config webpack.config.release.js && echo. && npm run doc && npm run test:exec",
+            "command": "npm run filecheck && npm run testcheck && npm run lint && echo \"Building Application (QA)\" | chalk cyan && webpack --display-modules --config webpack.config.release.js && npm run doc && npm run test:exec",
             "env": {
                 "NODE_ENV": "qa"
             }
         },
         "build:stage": {
-            "command": "npm run filecheck && npm run testcheck && npm run lint && echo \"Building Application (Stage)\" | chalk cyan && echo. && webpack --display-modules --config webpack.config.release.js && echo. && npm run doc && npm run test:exec",
+            "command": "npm run filecheck && npm run testcheck && npm run lint && echo \"Building Application (Stage)\" | chalk cyan && webpack --display-modules --config webpack.config.release.js && npm run doc && npm run test:exec",
             "env": {
                 "NODE_ENV": "stage"
             }
         },
         "build:production": {
-            "command": "npm run filecheck && npm run testcheck && npm run lint && echo \"Building Application (Production)\" | chalk cyan && echo. && webpack --display-modules --config webpack.config.release.js && echo. && npm run doc && npm run test:exec",
+            "command": "npm run filecheck && npm run testcheck && npm run lint && echo \"Building Application (Production)\" | chalk cyan && webpack --display-modules --config webpack.config.release.js && npm run doc && npm run test:exec",
             "env": {
                 "NODE_ENV": "production"
             }
