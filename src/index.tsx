@@ -8,6 +8,8 @@ require("./index.html");
 require("./favicon.ico");
 require("./web.config");
 
+require("../node_modules/bootstrap/dist/css/bootstrap.min.css");
+
 const config = configuration();
 
 // TODO: Redirect Non-Root URLs
