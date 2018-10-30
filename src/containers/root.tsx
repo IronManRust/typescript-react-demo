@@ -7,6 +7,8 @@ import App from "./app";
 import Login from "../components/login/login";
 import ForgotLogin from "../components/forgotLogin/forgotLogin";
 import Home from "../components/home/home";
+import Profile from "../components/profile/profile";
+import Settings from "../components/settings/settings";
 import Error404 from "../components/error404/error404";
 import * as routes from "../constants/routes";
 import reducers from "../reducers/index";
@@ -38,35 +40,51 @@ export class Root extends React.Component<IProps, IState> {
                     <HashRouter>
                         <Switch>
                             <Route
-                                path={routes.ROOT}
+                                path={routes.ROOT_LINK}
                                 exact={true}
                                 render={() => {
                                     return (
-                                        isAuthenticated() ? (<Redirect to={routes.HOME} />) : (<Redirect to={routes.LOGIN} />)
+                                        isAuthenticated() ? (<Redirect to={routes.HOME_LINK} />) : (<Redirect to={routes.LOGIN_LINK} />)
                                     );
                                 }}
                             />
                             <Route
-                                path={routes.LOGIN}
+                                path={routes.LOGIN_LINK}
                                 render={() => {
                                     return (
-                                        isAuthenticated() ? (<Redirect to={routes.HOME} />) : (<Login loading={undefined} />)
+                                        isAuthenticated() ? (<Redirect to={routes.HOME_LINK} />) : (<Login loading={undefined} />)
                                     );
                                 }}
                             />
                             <Route
-                                path={routes.FORGOT_LOGIN}
+                                path={routes.FORGOT_LOGIN_LINK}
                                 render={() => {
                                     return (
-                                        isAuthenticated() ? (<Redirect to={routes.HOME} />) : (<ForgotLogin />)
+                                        isAuthenticated() ? (<Redirect to={routes.HOME_LINK} />) : (<ForgotLogin />)
                                     );
                                 }}
                             />
                             <Route
-                                path={routes.HOME}
+                                path={routes.HOME_LINK}
                                 render={() => {
                                     return (
-                                        isAuthenticated() ? (<App user={undefined} loading={undefined} dialogs={undefined} error={undefined}><Home /></App>) : (<Redirect to={routes.LOGIN} />)
+                                        isAuthenticated() ? (<App user={undefined} loading={undefined} dialogs={undefined} error={undefined}><Home /></App>) : (<Redirect to={routes.LOGIN_LINK} />)
+                                    );
+                                }}
+                            />
+                            <Route
+                                path={routes.PROFILE_LINK}
+                                render={() => {
+                                    return (
+                                        isAuthenticated() ? (<App user={undefined} loading={undefined} dialogs={undefined} error={undefined}><Profile user={undefined} /></App>) : (<Redirect to={routes.LOGIN_LINK} />)
+                                    );
+                                }}
+                            />
+                            <Route
+                                path={routes.SETTINGS_LINK}
+                                render={() => {
+                                    return (
+                                        isAuthenticated() ? (<App user={undefined} loading={undefined} dialogs={undefined} error={undefined}><Settings /></App>) : (<Redirect to={routes.LOGIN_LINK} />)
                                     );
                                 }}
                             />

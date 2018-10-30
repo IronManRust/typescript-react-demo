@@ -1,11 +1,12 @@
 import * as React from "react";
-import { Alert, Button, ControlLabel, FormGroup, FormControl, FormControlProps } from "react-bootstrap";
+import { Alert, Button, ButtonToolbar, ControlLabel, FormGroup, FormControl, FormControlProps } from "react-bootstrap";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import { IGlobalState } from "../../reducers/index";
 import { ILoadingState } from "../../reducers/loading";
 import * as routes from "../../constants/routes";
 import { login } from "../../utils/session";
+import Header from "../header/header";
 import Loading from "../loading/loading";
 
 interface IProps extends React.ClassAttributes<Login> {
@@ -95,7 +96,7 @@ export class Login extends React.Component<IProps, IState> {
     private renderRedirect() {
         if (this.state.redirect) {
             return (
-                <Redirect to={routes.HOME} />
+                <Redirect to={routes.HOME_LINK} />
             );
         } else {
             return undefined;
@@ -120,20 +121,22 @@ export class Login extends React.Component<IProps, IState> {
         } else {
             return (
                 <div>
-                    <h1>TypeScript React Demo</h1>
+                    <Header user={undefined} breadcrumbs={[]} />
                     <FormGroup>
                         <ControlLabel>Email address</ControlLabel>
-                        <FormControl type="text" value={this.state.email} placeholder="Email address" onChange={this.handleChangeEmail} onKeyPress={this.handleKeyPress} />
+                        <FormControl type="email" value={this.state.email} placeholder="Email address" onChange={this.handleChangeEmail} onKeyPress={this.handleKeyPress} />
                     </FormGroup>
                     <FormGroup>
                         <ControlLabel>Password</ControlLabel>
                         <FormControl type="password" value={this.state.password} placeholder="Password" onChange={this.handleChangePassword} onKeyPress={this.handleKeyPress} />
                     </FormGroup>
                     <FormGroup>
-                        <Button type="submit" bsStyle="primary" onClick={this.handleClickLogin}>Login</Button>
+                        <ButtonToolbar>
+                            <Button type="submit" bsStyle="primary" onClick={this.handleClickLogin}>Login</Button>
+                        </ButtonToolbar>
                     </FormGroup>
                     <FormGroup>
-                        <Link to={routes.FORGOT_LOGIN}>Forgot your login informaton?</Link>
+                        <Link to={routes.FORGOT_LOGIN_LINK}>Forgot your login informaton?</Link>
                     </FormGroup>
                 </div>
             );

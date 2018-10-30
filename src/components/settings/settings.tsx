@@ -3,19 +3,19 @@ import { connect } from "react-redux";
 import Header from "../header/header";
 import * as routes from "../../constants/routes";
 
-interface IProps extends React.ClassAttributes<Error404> { }
+interface IProps extends React.ClassAttributes<Settings> { }
 
 interface IState { }
 
-export class Error404 extends React.Component<IProps, IState> {
+export class Settings extends React.Component<IProps, IState> {
 
     public render() {
         const breadcrumbs = [];
-        breadcrumbs.push({ "link": undefined, "label": routes.ERROR_404_LABEL });
+        breadcrumbs.push({ "link": undefined, "label": routes.SETTINGS_LABEL });
         return (
-            <div className="component-error404">
+            <div className="component-settings">
                 <Header user={undefined} breadcrumbs={breadcrumbs} />
-                <p>This is the error 404 page.</p>
+                <p>This is the settings page.</p>
             </div>
         );
     }
@@ -26,4 +26,4 @@ const mapStateToProps = ({}, {}) => {
     return {};
 };
 
-export default connect<{}, {}, IProps>(mapStateToProps)(Error404);
+export default connect<{}, {}, IProps>(mapStateToProps)(Settings);

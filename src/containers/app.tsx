@@ -87,7 +87,7 @@ export class App extends React.Component<IProps, IState> {
             this.props.error.code &&
             this.props.error.code === status.Unauthorized) {
             return (
-                <Redirect to={routes.LOGIN} />
+                <Redirect to={routes.LOGIN_LINK} />
             );
         } else {
             return undefined;
