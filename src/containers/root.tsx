@@ -12,6 +12,7 @@ import Settings from "../components/settings/settings";
 import Error404 from "../components/error404/error404";
 import * as routes from "../constants/routes";
 import reducers from "../reducers/index";
+import { logErrorBrowser } from "../utils/logging";
 import { isAuthenticated } from "../utils/session";
 
 /* tslint:disable:no-any */
@@ -26,8 +27,7 @@ interface IProps extends React.ClassAttributes<Root> { }
 interface IState { }
 
 window.onerror = function(message: string, url: string, lineNumber: number, columnNumber: number, error: Error) {
-    console.log(message, { "url": url, "lineNumber": lineNumber, "columnNumber": columnNumber, "error": JSON.stringify(error) });
-    // TODO: Remote Logging
+    logErrorBrowser(message, url, lineNumber, columnNumber, error);
 };
 
 export class Root extends React.Component<IProps, IState> {

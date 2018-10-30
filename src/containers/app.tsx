@@ -12,6 +12,7 @@ import { store } from "../containers/root";
 import { errorClear } from "../actions/error";
 import * as routes from "../constants/routes";
 import Loading from "../components/loading/loading";
+import { logErrorState } from "../utils/logging";
 
 interface IProps extends React.ClassAttributes<App> {
     user: IUserState | undefined;
@@ -44,8 +45,7 @@ export class App extends React.Component<IProps, IState> {
             this.props.error.code >= 500 &&
             this.props.error.message) {
             // The error code is unexpected, so we should log it.
-            // TODO: Console Logging
-            // TODO: Remote Logging
+            logErrorState(this.props.error.code, this.props.error.message, this.props.error.elementID);
         }
     }
 
@@ -55,8 +55,7 @@ export class App extends React.Component<IProps, IState> {
             nextProps.error.code >= 500 &&
             nextProps.error.message) {
             // The error code is unexpected, so we should log it.
-            // TODO: Console Logging
-            // TODO: Remote Logging
+            logErrorState(nextProps.error.code, nextProps.error.message, nextProps.error.elementID);
         }
     }
 
