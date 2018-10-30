@@ -90,7 +90,7 @@ export class Header extends React.Component<IProps, IState> {
         } else {
             return (
                 <Nav pullRight={true}>
-                    <NavItem href={`#${routes.LOGIN_LINK}`}>{routes.LOGIN_LABEL}}</NavItem>
+                    <NavItem href={`#${routes.LOGIN_LINK}`}>{routes.LOGIN_LABEL}</NavItem>
                 </Nav>
             );
         }
