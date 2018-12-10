@@ -4,9 +4,32 @@ const {
     JSDOM
 } = require("jsdom");
 
-// TODO: Update Example URL
+const config = require("./src/utils/config.json");
+
+let domain = "www.example.com";
+switch (process.env.NODE_ENV) {
+    case "local":
+        domain = config.local.domain;
+        break;
+    case "development":
+        domain = config.development.domain;
+        break;
+    case "qa":
+        domain = config.qa.domain;
+        break;
+    case "stage":
+        domain = config.stage.domain;
+        break;
+    case "production":
+        domain = config.production.domain;
+        break;
+    default:
+        // Do Nothing
+        break;
+}
+
 const jsdom = new JSDOM("<!DOCTYPE html><html><head></head><body></body></html>", {
-    "url": "https://www.example.com"
+    "url": `https://${domain}`
 });
 
 global.window = jsdom.window;

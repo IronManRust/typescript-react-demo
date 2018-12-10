@@ -12,8 +12,6 @@ require("../node_modules/bootstrap/dist/css/bootstrap.min.css");
 
 const config = configuration();
 
-// TODO: Redirect Non-Root URLs
-
 const maxWidth = 11; // The maximum width of any displayable value.
 const outputEN = fixedWidthString(config.environment, maxWidth);
 
