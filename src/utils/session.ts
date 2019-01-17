@@ -2,18 +2,29 @@ import * as cookie from "react-cookie";
 import * as status from "statuses";
 import uuid from "uuid/v4";
 import { userSet, userClear } from "../actions/user";
+import { settingSet, settingsClear } from "../actions/settings";
 import { loadingEnable, loadingDisable } from "../actions/loading";
 import { popupClear, modalClear } from "../actions/dialogs";
 import { errorClear } from "../actions/error";
 import { store } from "../containers/root";
+import { ISetting } from "../types/setting";
 
 // TODO: Repalce Placeholder Data With API Responses
 const placeholderID = uuid();
 const placeholderToken = uuid();
-const placeholderEmail = "email@example.com";
-const placeholderPassword = "password";
+export const placeholderEmail = "email@example.com";
+export const placeholderPassword = "password";
 const placeholderFirstName = "John";
 const placeholderLastName = "Smith";
+const placeholderSettings: ISetting[] = [];
+placeholderSettings.push({ "Type": "String", "Key": "String1", "Value": "ABC" });
+placeholderSettings.push({ "Type": "String", "Key": "String2", "Value": "XYZ" });
+placeholderSettings.push({ "Type": "Number", "Key": "Number1", "Value": "123" });
+placeholderSettings.push({ "Type": "Number", "Key": "Number2", "Value": "789" });
+placeholderSettings.push({ "Type": "Date", "Key": "Date1", "Value": "1/1/1970" });
+placeholderSettings.push({ "Type": "Date", "Key": "Date2", "Value": "12/31/1999" });
+placeholderSettings.push({ "Type": "Boolean", "Key": "Boolean1", "Value": "True" });
+placeholderSettings.push({ "Type": "Boolean", "Key": "Boolean2", "Value": "False" });
 const placeholderTimeoutDelay = 2000;
 
 const cookieNameToken = "token";
@@ -62,6 +73,9 @@ export async function login(email: string | undefined, password: string | undefi
                     cookieWrite(cookieNameToken, placeholderToken);
                     storeClearFull();
                     store.dispatch(userSet(placeholderID, placeholderToken, placeholderEmail, placeholderFirstName, placeholderLastName));
+                    for (const placeholderSetting of placeholderSettings) {
+                        store.dispatch(settingSet(placeholderSetting));
+                    }
                     resolve(true);
                 } else {
                     cookieWrite(cookieNameToken, undefined);
@@ -110,12 +124,15 @@ function cookieWrite(cookieName: string, value: string | undefined) {
 }
 
 function storeClearFull() {
-    storeClearPartial(true, true, true, true);
+    storeClearPartial(true, true, true, true, true);
 }
 
-function storeClearPartial(user: boolean, loading: boolean, dialogs: boolean, error: boolean) {
+function storeClearPartial(user: boolean, settings: boolean, loading: boolean, dialogs: boolean, error: boolean) {
     if (user) {
         store.dispatch(userClear());
+    }
+    if (settings) {
+        store.dispatch(settingsClear());
     }
     if (loading) {
         store.dispatch(loadingDisable());

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import Footer from "../footer/footer";
 import Header from "../header/header";
 import * as routes from "../../constants/routes";
 
@@ -16,6 +17,7 @@ export class ForgotLogin extends React.Component<IProps, IState> {
             <div className="component-forgot-login">
                 <Header user={undefined} breadcrumbs={breadcrumbs} />
                 <p>This is the forgot login page.</p>
+                <Footer />
             </div>
         );
     }

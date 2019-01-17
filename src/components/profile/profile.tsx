@@ -3,6 +3,7 @@ import { Alert, Button, ButtonToolbar, ControlLabel, FormGroup, FormControl, For
 import { connect } from "react-redux";
 import { userSet } from "../../actions/user";
 import { store } from "../../containers/root";
+import Footer from "../footer/footer";
 import Header from "../header/header";
 import * as routes from "../../constants/routes";
 import { IGlobalState } from "../../reducers/index";
@@ -221,6 +222,7 @@ export class Profile extends React.Component<IProps, IState> {
                 {this.renderStatus()}
                 {this.renderDisplay()}
                 {this.renderEdit()}
+                <Footer />
             </div>
         );
     }

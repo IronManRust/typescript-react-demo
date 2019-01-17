@@ -4,20 +4,17 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as status from "statuses";
 import { IGlobalState } from "../reducers/index";
-import { IUserState } from "../reducers/user";
 import { ILoadingState } from "../reducers/loading";
-import { IDialogsState } from "../reducers/dialogs";
 import { IErrorState } from "../reducers/error";
 import { store } from "../containers/root";
 import { errorClear } from "../actions/error";
 import * as routes from "../constants/routes";
+import Interstitial from "../components/interstitial/interstitial";
 import Loading from "../components/loading/loading";
 import { logErrorState } from "../utils/logging";
 
 interface IProps extends React.ClassAttributes<App> {
-    user: IUserState | undefined;
     loading: ILoadingState | undefined;
-    dialogs: IDialogsState | undefined;
     error: IErrorState | undefined;
 }
 
@@ -117,9 +114,11 @@ export class App extends React.Component<IProps, IState> {
 
     private renderInterstitials() {
         if (this.state.enableInterstitials) {
-            // TODO: Create Interstitials
             return (
-                <div />
+                // There is currently only a single interstitial page listed, but multiple can be added here.
+                <div>
+                    <Interstitial settings={undefined} />
+                </div>
             );
         } else {
             return undefined;
@@ -142,9 +141,7 @@ export class App extends React.Component<IProps, IState> {
 
 const mapStateToProps = (state: IGlobalState, {}) => {
     return {
-        "user": state.user || undefined,
         "loading": state.loading || undefined,
-        "dialogs": state.dialogs || undefined,
         "error": state.error || undefined
     };
 };

@@ -5,7 +5,8 @@ import { Link, Redirect } from "react-router-dom";
 import { IGlobalState } from "../../reducers/index";
 import { ILoadingState } from "../../reducers/loading";
 import * as routes from "../../constants/routes";
-import { login } from "../../utils/session";
+import { login, placeholderEmail, placeholderPassword } from "../../utils/session";
+import Footer from "../footer/footer";
 import Header from "../header/header";
 import Loading from "../loading/loading";
 
@@ -124,11 +125,11 @@ export class Login extends React.Component<IProps, IState> {
                     <Header user={undefined} breadcrumbs={[]} />
                     <FormGroup>
                         <ControlLabel>Email address</ControlLabel>
-                        <FormControl type="email" value={this.state.email} placeholder="Email address" onChange={this.handleChangeEmail} onKeyPress={this.handleKeyPress} />
+                        <FormControl type="email" value={this.state.email} placeholder={`Email address (hint: ${placeholderEmail})`} onChange={this.handleChangeEmail} onKeyPress={this.handleKeyPress} />
                     </FormGroup>
                     <FormGroup>
                         <ControlLabel>Password</ControlLabel>
-                        <FormControl type="password" value={this.state.password} placeholder="Password" onChange={this.handleChangePassword} onKeyPress={this.handleKeyPress} />
+                        <FormControl type="password" value={this.state.password} placeholder={`Password (hint: ${placeholderPassword})`} onChange={this.handleChangePassword} onKeyPress={this.handleKeyPress} />
                     </FormGroup>
                     <FormGroup>
                         <ButtonToolbar>
@@ -138,6 +139,7 @@ export class Login extends React.Component<IProps, IState> {
                     <FormGroup>
                         <Link to={routes.FORGOT_LOGIN_LINK}>Forgot your login informaton?</Link>
                     </FormGroup>
+                    <Footer />
                 </div>
             );
         }

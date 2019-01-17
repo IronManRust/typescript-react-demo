@@ -7,7 +7,6 @@ import { Root } from "./root";
 configure({ "adapter": new Adapter() });
 
 describe("Component - Root", () => {
-    // TODO: Write More Meaningful Tests
     it("Renders", () => {
         const wrapper = shallow(<Root />);
         expect(wrapper.find(".container-root").first().children().length).to.equal(1);

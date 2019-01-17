@@ -15,6 +15,8 @@ import reducers from "../reducers/index";
 import { logErrorBrowser } from "../utils/logging";
 import { isAuthenticated } from "../utils/session";
 
+require("../stylesheets/main.scss");
+
 /* tslint:disable:no-any */
 declare const window: Window & { devToolsExtension: any; __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any };
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -68,7 +70,7 @@ export class Root extends React.Component<IProps, IState> {
                                 path={routes.HOME_LINK}
                                 render={() => {
                                     return (
-                                        isAuthenticated() ? (<App user={undefined} loading={undefined} dialogs={undefined} error={undefined}><Home /></App>) : (<Redirect to={routes.LOGIN_LINK} />)
+                                        isAuthenticated() ? (<App loading={undefined} error={undefined}><Home /></App>) : (<Redirect to={routes.LOGIN_LINK} />)
                                     );
                                 }}
                             />
@@ -76,7 +78,7 @@ export class Root extends React.Component<IProps, IState> {
                                 path={routes.PROFILE_LINK}
                                 render={() => {
                                     return (
-                                        isAuthenticated() ? (<App user={undefined} loading={undefined} dialogs={undefined} error={undefined}><Profile user={undefined} /></App>) : (<Redirect to={routes.LOGIN_LINK} />)
+                                        isAuthenticated() ? (<App loading={undefined} error={undefined}><Profile user={undefined} /></App>) : (<Redirect to={routes.LOGIN_LINK} />)
                                     );
                                 }}
                             />
@@ -84,7 +86,7 @@ export class Root extends React.Component<IProps, IState> {
                                 path={routes.SETTINGS_LINK}
                                 render={() => {
                                     return (
-                                        isAuthenticated() ? (<App user={undefined} loading={undefined} dialogs={undefined} error={undefined}><Settings /></App>) : (<Redirect to={routes.LOGIN_LINK} />)
+                                        isAuthenticated() ? (<App loading={undefined} error={undefined}><Settings settings={undefined} /></App>) : (<Redirect to={routes.LOGIN_LINK} />)
                                     );
                                 }}
                             />
