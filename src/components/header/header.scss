@@ -1,3 +1,11 @@
 .component-header {
     z-index: 4;
+    .logo {
+        height: 18px;
+        width: 18px;
+        display: inline-block;
+    }
+    .user {
+        display: inline-block;
+    }
 }

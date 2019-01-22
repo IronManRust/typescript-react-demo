@@ -16,7 +16,7 @@ export class ForgotLogin extends React.Component<IProps, IState> {
         return (
             <div className="component-forgot-login">
                 <Header user={undefined} breadcrumbs={breadcrumbs} />
-                <p>This is the forgot login page.</p>
+                <p>This is the forgot login page. It is an example of a page you can navigate to without being authenticated. That said, everything you need to know to login is on the login page ...</p>
                 <Footer />
             </div>
         );

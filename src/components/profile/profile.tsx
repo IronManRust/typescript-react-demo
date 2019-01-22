@@ -219,6 +219,7 @@ export class Profile extends React.Component<IProps, IState> {
         return (
             <div className="component-profile">
                 <Header user={undefined} breadcrumbs={breadcrumbs} />
+                <p>This is the user profile page. It illustrates how to use a form to update the Redux store, and then reflect that updated store.</p>
                 {this.renderStatus()}
                 {this.renderDisplay()}
                 {this.renderEdit()}

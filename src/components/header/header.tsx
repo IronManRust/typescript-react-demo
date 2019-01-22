@@ -1,5 +1,5 @@
 import * as React from "react";
-import { MenuItem, Nav, Navbar, NavDropdown, NavItem } from "react-bootstrap";
+import { Glyphicon, MenuItem, Nav, Navbar, NavDropdown, NavItem } from "react-bootstrap";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as routes from "../../constants/routes";
@@ -79,7 +79,7 @@ export class Header extends React.Component<IProps, IState> {
             this.props.user.id) {
             return (
                 <Nav pullRight={true}>
-                    <NavDropdown id="component-header-menu" title={`Hello, ${this.props.user.firstName}`}>
+                    <NavDropdown id="component-header-menu" title={<div className="user"><Glyphicon glyph="user" /> {this.props.user.firstName}</div>}>
                         <MenuItem href={`#${routes.PROFILE_LINK}`}>{routes.PROFILE_LABEL}</MenuItem>
                         <MenuItem href={`#${routes.SETTINGS_LINK}`}>{routes.SETTINGS_LABEL}</MenuItem>
                         <MenuItem divider={true} />
@@ -103,7 +103,7 @@ export class Header extends React.Component<IProps, IState> {
                 <Navbar fluid={true}>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <Navbar.Link href={`#${routes.ROOT_LINK}`}>{routes.ROOT_LABEL}</Navbar.Link>
+                            <Navbar.Link href={`#${routes.ROOT_LINK}`}><img className="logo" src={require("./header.png")} title={routes.ROOT_LABEL} alt={routes.ROOT_LABEL}/> {routes.ROOT_LABEL}</Navbar.Link>
                         </Navbar.Brand>
                         <Navbar.Toggle />
                     </Navbar.Header>

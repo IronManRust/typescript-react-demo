@@ -135,7 +135,15 @@ export class Interstitial extends React.Component<IProps, IState> {
     private renderBodyText() {
         if (this.state.result === undefined) {
             return (
-                <p>This is the interstitial prompt.</p>
+                <div>
+                    <p>This is an interstitial prompt. It shows when the authenticated user has not previously filled out a setting, in this case <em>{this.settingKey}</em>.</p>
+                    <p>Common use cases include:</p>
+                    <ul>
+                        <li>Accepting terms &amp; conditions</li>
+                        <li>Allowing cookies</li>
+                        <li>Announcing new website features</li>
+                    </ul>
+                </div>
             );
         } else {
             return undefined;

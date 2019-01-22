@@ -9,6 +9,8 @@ import ForgotLogin from "../components/forgotLogin/forgotLogin";
 import Home from "../components/home/home";
 import Profile from "../components/profile/profile";
 import Settings from "../components/settings/settings";
+import Pages from "../components/pages/pages";
+import About from "../components/about/about";
 import Error404 from "../components/error404/error404";
 import * as routes from "../constants/routes";
 import reducers from "../reducers/index";
@@ -35,7 +37,7 @@ window.onerror = function(message: string, url: string, lineNumber: number, colu
 export class Root extends React.Component<IProps, IState> {
 
     public render() {
-        // TODO: Additional Page Components
+        // TODO: Additional Components
         return (
             <div className="container-root">
                 <Provider store={store}>
@@ -87,6 +89,22 @@ export class Root extends React.Component<IProps, IState> {
                                 render={() => {
                                     return (
                                         isAuthenticated() ? (<App loading={undefined} error={undefined}><Settings settings={undefined} /></App>) : (<Redirect to={routes.LOGIN_LINK} />)
+                                    );
+                                }}
+                            />
+                            <Route
+                                path={routes.PAGES_LINK}
+                                render={() => {
+                                    return (
+                                        isAuthenticated() ? (<App loading={undefined} error={undefined}><Pages /></App>) : (<Redirect to={routes.LOGIN_LINK} />)
+                                    );
+                                }}
+                            />
+                            <Route
+                                path={routes.ABOUT_LINK}
+                                render={() => {
+                                    return (
+                                        isAuthenticated() ? (<App loading={undefined} error={undefined}><About /></App>) : (<Redirect to={routes.LOGIN_LINK} />)
                                     );
                                 }}
                             />

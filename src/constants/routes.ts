@@ -11,10 +11,16 @@ export const HOME_LINK = "/home";
 export const HOME_LABEL = "Home";
 
 export const PROFILE_LINK = "/profile";
-export const PROFILE_LABEL = "Profile";
+export const PROFILE_LABEL = "User profile";
 
 export const SETTINGS_LINK = "/settings";
-export const SETTINGS_LABEL = "Settings";
+export const SETTINGS_LABEL = "User settings";
+
+export const PAGES_LINK = "/pages";
+export const PAGES_LABEL = "Feature pages";
+
+export const ABOUT_LINK = "/about";
+export const ABOUT_LABEL = "About";
 
 export const ERROR_404_LINK = "*";
 export const ERROR_404_LABEL = "Oops!";

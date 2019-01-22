@@ -16,7 +16,7 @@ export class Footer extends React.Component<IProps, IState> {
         return (
             <div className="component-footer">
                 <Panel>
-                    <Panel.Body>Created by <ExternalLink href={routesExternal.GITHUB_LINK} newTab={true}>{routesExternal.GITHUB_LABEL}</ExternalLink> | Copyright © {(new Date()).getFullYear()}</Panel.Body>
+                    <Panel.Body>Created by <ExternalLink href={routesExternal.GITHUB_PROFILE_LINK} newTab={true}>{routesExternal.GITHUB_PROFILE_LABEL}</ExternalLink> | Copyright © {(new Date()).getFullYear()}</Panel.Body>
                 </Panel>
             </div>
         );

@@ -45,7 +45,7 @@ export class Settings extends React.Component<IProps, IState> {
             );
         } else {
             return (
-                <p>There are no settings.</p>
+                <p><em>There are no settings.</em></p>
             );
         }
     }
@@ -56,7 +56,7 @@ export class Settings extends React.Component<IProps, IState> {
         return (
             <div className="component-settings">
                 <Header user={undefined} breadcrumbs={breadcrumbs} />
-                <p>This is the settings page.</p>
+                <p>This is the settings page. It demonstrates reading values out of the Redux store and displaying them to the user.</p>
                 {this.renderSettings()}
                 <Footer />
             </div>

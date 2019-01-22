@@ -123,6 +123,7 @@ export class Login extends React.Component<IProps, IState> {
             return (
                 <div>
                     <Header user={undefined} breadcrumbs={[]} />
+                    <p>Welcome to the TypeScript React Demo website. Login and have a look around!</p>
                     <FormGroup>
                         <ControlLabel>Email address</ControlLabel>
                         <FormControl type="email" value={this.state.email} placeholder={`Email address (hint: ${placeholderEmail})`} onChange={this.handleChangeEmail} onKeyPress={this.handleKeyPress} />
