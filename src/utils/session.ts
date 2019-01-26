@@ -9,7 +9,7 @@ import { errorClear } from "../actions/error";
 import { store } from "../containers/root";
 import { ISetting } from "../types/setting";
 
-// TODO: Repalce Placeholder Data With API Responses
+// The following placeholder data stands in for data that in an actual application would be provided by a remote API response.
 const placeholderID = uuid();
 const placeholderToken = uuid();
 export const placeholderEmail = "email@example.com";
@@ -67,7 +67,7 @@ export async function login(email: string | undefined, password: string | undefi
     store.dispatch(loadingEnable());
     const promise = new Promise<boolean>((resolve: (success: boolean) => void, reject: (rejection: IRejection) => void) => {
         try {
-            // TODO: Actually Talk To API
+            // The following placeholder code simulates what an actual application would normally determine based on interactions with a remote API.
             setTimeout(() => {
                 if ((email === placeholderEmail && password === placeholderPassword) || (cookieRead(cookieNameToken))) {
                     cookieWrite(cookieNameToken, placeholderToken);
@@ -96,7 +96,7 @@ export async function logout() {
     store.dispatch(loadingEnable());
     const promise = new Promise<boolean>((resolve: (success: boolean) => void, reject: (rejection: IRejection) => void) => {
         try {
-            // TODO: Actually Talk To API
+            // The following placeholder code simulates what an actual application would normally determine based on interactions with a remote API.
             setTimeout(() => {
                 cookieWrite(cookieNameToken, undefined);
                 storeClearFull();
@@ -122,6 +122,11 @@ function cookieWrite(cookieName: string, value: string | undefined) {
         cookie.remove(cookieName, {});
     }
 }
+
+// TODO: Add Templated GET Call
+// TODO: Add Templated PUT Call
+// TODO: Add Templated POST Call
+// TODO: Add Templated DELETE Call
 
 function storeClearFull() {
     storeClearPartial(true, true, true, true, true);
