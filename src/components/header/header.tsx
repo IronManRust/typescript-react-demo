@@ -56,7 +56,7 @@ export class Header extends React.Component<IProps, IState> {
 
     private renderBreadcrumbs() {
         return (
-            <div>
+            <Nav>
             {
                 this.props.breadcrumbs.map((breadcrumb, index) => {
                     if (breadcrumb.link) {
@@ -65,12 +65,12 @@ export class Header extends React.Component<IProps, IState> {
                         );
                     } else {
                         return (
-                            <Navbar.Text key={index}>{breadcrumb.label}</Navbar.Text>
+                            <NavItem key={index} disabled={true}>{breadcrumb.label}</NavItem>
                         );
                     }
                 })
             }
-            </div>
+            </Nav>
         );
     }
 
@@ -103,7 +103,7 @@ export class Header extends React.Component<IProps, IState> {
                 <Navbar fluid={true}>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <Navbar.Link href={`#${routes.ROOT_LINK}`}><img className="logo" src={require("./header.png")} title={routes.ROOT_LABEL} alt={routes.ROOT_LABEL}/> {routes.ROOT_LABEL}</Navbar.Link>
+                            <Navbar.Link href={`#${routes.ROOT_LINK}`}><img className="logo" src={require("./header.png")} title="Logo" alt="Logo" /> {routes.ROOT_LABEL}</Navbar.Link>
                         </Navbar.Brand>
                         <Navbar.Toggle />
                     </Navbar.Header>

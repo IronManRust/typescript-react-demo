@@ -30,7 +30,7 @@ export class Home extends React.Component<IProps, IState> {
                     <LinkContainer to={routes.ABOUT_LINK}>
                         <ListGroupItem>{routes.ABOUT_LABEL}</ListGroupItem>
                     </LinkContainer>
-                    <LinkContainer to="/invalid">
+                    <LinkContainer to={`/${(new Date()).getTime()}`}>
                         <ListGroupItem>Who knows ...</ListGroupItem>
                     </LinkContainer>
                 </ListGroup>

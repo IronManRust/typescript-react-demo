@@ -19,6 +19,19 @@ export const SETTINGS_LABEL = "User settings";
 export const PAGES_LINK = "/pages";
 export const PAGES_LABEL = "Feature pages";
 
+export const PAGE_ERRORS_LINK = "/page/errors";
+export const PAGE_ERRORS_LABEL = "Errors";
+
+export const PAGE_HIERARCHY_LINK = "/page/hierarchy";
+export const PAGE_HIERARCHY_LABEL = "Hierarchy";
+export const PAGE_HIERARCHY_ITEM_LINK = "/page/hierarchy-item/:item";
+export const PAGE_HIERARCHY_ITEM_LABEL = "Hierarchy item :item";
+export const PAGE_HIERARCHY_SUBITEM_LINK = "/page/hierarchy-sub-item/:item/:subItem";
+export const PAGE_HIERARCHY_SUBITEM_LABEL = "Hierarchy item :item, sub-item :subItem";
+
+export const PAGE_POPUPS_LINK = "/page/popups";
+export const PAGE_POPUPS_LABEL = "Popups";
+
 export const ABOUT_LINK = "/about";
 export const ABOUT_LABEL = "About";
 
