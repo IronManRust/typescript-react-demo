@@ -1,12 +1,14 @@
 import * as cookie from "react-cookie";
 import * as status from "statuses";
+import * as superagent from "superagent";
 import uuid from "uuid/v4";
 import { userSet, userClear } from "../actions/user";
 import { settingSet, settingsClear } from "../actions/settings";
 import { loadingEnable, loadingDisable } from "../actions/loading";
 import { popupClear, modalClear } from "../actions/dialogs";
-import { errorClear } from "../actions/error";
+import { errorSet, errorClear } from "../actions/error";
 import { store } from "../containers/root";
+import { ILink } from "../types/link";
 import { ISetting } from "../types/setting";
 
 // The following placeholder data stands in for data that in an actual application would be provided by a remote API response.
@@ -29,6 +31,9 @@ const placeholderTimeoutDelay = 2000;
 
 const cookieNameToken = "token";
 const cookieNameAuthenticating = "authenticating";
+
+const unauthorizedRejectionCode = 401;
+const unauthorizedRejectionMessage = status[unauthorizedRejectionCode] || "";
 
 const defaultRejectionCode = 500;
 const defaultRejectionMessage = status[defaultRejectionCode] || "";
@@ -123,10 +128,143 @@ function cookieWrite(cookieName: string, value: string | undefined) {
     }
 }
 
-// TODO: Add Templated GET Call
-// TODO: Add Templated PUT Call
-// TODO: Add Templated POST Call
-// TODO: Add Templated DELETE Call
+function isSuccessCode(value: number) {
+    return value.toString().substr(0, 1) === "2";
+}
+
+export async function getData<T extends string | object | [] | undefined>(link: ILink) {
+    store.dispatch(loadingEnable());
+    const promise = new Promise<T>((resolve: (result: T) => void, reject: (rejection: IRejection) => void) => {
+        try {
+            superagent
+                .get(link.HREF)
+                .withCredentials()
+                .end(function handleCallback(error, response) {
+                    if (!error &&
+                        response &&
+                        response.status &&
+                        isSuccessCode(response.status)) {
+                        store.dispatch(loadingDisable());
+                        resolve(response.body || response.text || undefined);
+                    } else if (response && response.status === unauthorizedRejectionCode) {
+                        cookieWrite(cookieNameToken, undefined);
+                        console.log("Authenication Failure");
+                        storeClearFull();
+                        store.dispatch(errorSet(unauthorizedRejectionCode, unauthorizedRejectionMessage, undefined));
+                        reject({ "code": error && error.status ? error.status : defaultRejectionCode, "message": error && error.message ? error.message : defaultRejectionMessage, "details": error && error.response && error.response.body && error.response.body.Details ? error.response.body.Details : undefined });
+                    } else {
+                        store.dispatch(loadingDisable());
+                        reject({ "code": error && error.status ? error.status : defaultRejectionCode, "message": error && error.message ? error.message : defaultRejectionMessage, "details": error && error.response && error.response.body && error.response.body.Details ? error.response.body.Details : undefined });
+                    }
+                });
+        } catch (exception) {
+            store.dispatch(loadingDisable());
+            reject({ "code": defaultRejectionCode, "message": JSON.stringify(exception), "details": undefined });
+        }
+    });
+    return promise;
+}
+
+export async function putData<T extends string | object | [] | undefined, U extends string | object | [] | undefined>(link: ILink, data: T) {
+    store.dispatch(loadingEnable());
+    const promise = new Promise<U>((resolve: (result: U) => void, reject: (rejection: IRejection) => void) => {
+        try {
+            superagent
+                .put(link.HREF)
+                .withCredentials()
+                .send(data)
+                .end(function handleCallback(error, response) {
+                    if (!error &&
+                        response &&
+                        response.status &&
+                        isSuccessCode(response.status)) {
+                        store.dispatch(loadingDisable());
+                        resolve(response.body || response.text || undefined);
+                    } else if (response && response.status === unauthorizedRejectionCode) {
+                        cookieWrite(cookieNameToken, undefined);
+                        console.log("Authenication Failure");
+                        storeClearFull();
+                        store.dispatch(errorSet(unauthorizedRejectionCode, unauthorizedRejectionMessage, undefined));
+                        reject({ "code": error && error.status ? error.status : defaultRejectionCode, "message": error && error.message ? error.message : defaultRejectionMessage, "details": error && error.response && error.response.body && error.response.body.Details ? error.response.body.Details : undefined });
+                    } else {
+                        store.dispatch(loadingDisable());
+                        reject({ "code": error && error.status ? error.status : defaultRejectionCode, "message": error && error.message ? error.message : defaultRejectionMessage, "details": error && error.response && error.response.body && error.response.body.Details ? error.response.body.Details : undefined });
+                    }
+                });
+        } catch (exception) {
+            store.dispatch(loadingDisable());
+            reject({ "code": defaultRejectionCode, "message": JSON.stringify(exception), "details": undefined });
+        }
+    });
+    return promise;
+}
+
+export async function postData<T extends string | object | [] | undefined, U extends string | object | [] | undefined>(link: ILink, data: T) {
+    store.dispatch(loadingEnable());
+    const promise = new Promise<U>((resolve: (result: U) => void, reject: (rejection: IRejection) => void) => {
+        try {
+            superagent
+                .post(link.HREF)
+                .withCredentials()
+                .send(data)
+                .end(function handleCallback(error, response) {
+                    if (!error &&
+                        response &&
+                        response.status &&
+                        isSuccessCode(response.status)) {
+                        store.dispatch(loadingDisable());
+                        resolve(response.body || response.text || undefined);
+                    } else if (response && response.status === unauthorizedRejectionCode) {
+                        cookieWrite(cookieNameToken, undefined);
+                        console.log("Authenication Failure");
+                        storeClearFull();
+                        store.dispatch(errorSet(unauthorizedRejectionCode, unauthorizedRejectionMessage, undefined));
+                        reject({ "code": error && error.status ? error.status : defaultRejectionCode, "message": error && error.message ? error.message : defaultRejectionMessage, "details": error && error.response && error.response.body && error.response.body.Details ? error.response.body.Details : undefined });
+                    } else {
+                        store.dispatch(loadingDisable());
+                        reject({ "code": error && error.status ? error.status : defaultRejectionCode, "message": error && error.message ? error.message : defaultRejectionMessage, "details": error && error.response && error.response.body && error.response.body.Details ? error.response.body.Details : undefined });
+                    }
+                });
+        } catch (exception) {
+            store.dispatch(loadingDisable());
+            reject({ "code": defaultRejectionCode, "message": JSON.stringify(exception), "details": undefined });
+        }
+    });
+    return promise;
+}
+
+export async function deleteData(link: ILink) {
+    store.dispatch(loadingEnable());
+    const promise = new Promise<void>((resolve: () => void, reject: (rejection: IRejection) => void) => {
+        try {
+            superagent
+                .del(link.HREF)
+                .withCredentials()
+                .end(function handleCallback(error, response) {
+                    if (!error &&
+                        response &&
+                        response.status &&
+                        isSuccessCode(response.status)) {
+                        store.dispatch(loadingDisable());
+                        resolve();
+                    } else if (response && response.status === unauthorizedRejectionCode) {
+                        cookieWrite(cookieNameToken, undefined);
+                        console.log("Authenication Failure");
+                        storeClearFull();
+                        store.dispatch(errorSet(unauthorizedRejectionCode, unauthorizedRejectionMessage, undefined));
+                        reject({ "code": error && error.status ? error.status : defaultRejectionCode, "message": error && error.message ? error.message : defaultRejectionMessage, "details": error && error.response && error.response.body && error.response.body.Details ? error.response.body.Details : undefined });
+                    } else {
+                        store.dispatch(loadingDisable());
+                        reject({ "code": error && error.status ? error.status : defaultRejectionCode, "message": error && error.message ? error.message : defaultRejectionMessage, "details": error && error.response && error.response.body && error.response.body.Details ? error.response.body.Details : undefined });
+                    }
+                });
+        } catch (exception) {
+            store.dispatch(loadingDisable());
+            reject({ "code": defaultRejectionCode, "message": JSON.stringify(exception), "details": undefined });
+        }
+    });
+    return promise;
+}
 
 function storeClearFull() {
     storeClearPartial(true, true, true, true, true);
