@@ -108,7 +108,7 @@ export class Root extends React.Component<IProps, IState> {
                                 path={routes.PAGE_ERRORS_LINK}
                                 render={() => {
                                     return (
-                                        isAuthenticated() ? (<App loading={undefined} error={undefined}><PageErrors /></App>) : (<Redirect to={routes.LOGIN_LINK} />)
+                                        isAuthenticated() ? (<App loading={undefined} error={undefined}><PageErrors error={undefined} /></App>) : (<Redirect to={routes.LOGIN_LINK} />)
                                     );
                                 }}
                             />
@@ -140,7 +140,7 @@ export class Root extends React.Component<IProps, IState> {
                                 path={routes.PAGE_POPUPS_LINK}
                                 render={() => {
                                     return (
-                                        isAuthenticated() ? (<App loading={undefined} error={undefined}><PagePopups /></App>) : (<Redirect to={routes.LOGIN_LINK} />)
+                                        isAuthenticated() ? (<App loading={undefined} error={undefined}><PagePopups dialogs={undefined} /></App>) : (<Redirect to={routes.LOGIN_LINK} />)
                                     );
                                 }}
                             />
