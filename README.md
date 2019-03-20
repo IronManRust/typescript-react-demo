@@ -1,6 +1,8 @@
 # TypeScript React Demo
 
----
+[https://ironmanrust-typescript-react-demo.netlify.com](https://ironmanrust-typescript-react-demo.netlify.com)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b8b1511d-829b-42b7-8995-8a06584a0096/deploy-status)](https://app.netlify.com/sites/ironmanrust-typescript-react-demo/deploys)
 
 This is a reference demo, written in TypeScript, that illustrates features and design patterns applicable to a more substantial React-based application. It is not meant to be a fully-functional website, but instead provide examples of how to properly use technologies and tooling including:
 
