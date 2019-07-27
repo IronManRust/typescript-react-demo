@@ -55,7 +55,7 @@
         "jsx-no-string-ref": true,
         "jsx-self-close": true,
         "label-position": true,
-        "linebreak-style": [true, "CRLF"],
+        "linebreak-style": false,
         "match-default-export-name": false,
         "max-classes-per-file": [true, 1],
         "max-file-line-count": [false],
