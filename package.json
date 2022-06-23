@@ -145,7 +145,7 @@
         "htmlhint": "0.10.1",
         "@types/htmlhint": "0.9.1",
         "ignore-styles": "5.0.1",
-        "jsdom": "13.0.0",
+        "jsdom": "16.5.0",
         "@types/jsdom": "12.2.0",
         "jsonlint-cli": "1.0.1",
         "markdownlint-cli": "0.13.0",
