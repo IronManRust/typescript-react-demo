@@ -1,6 +1,6 @@
 # TypeScript React Demo
 
-[https://ironmanrust-typescript-react-demo.netlify.com](https://ironmanrust-typescript-react-demo.netlify.com)
+[https://ironmanrust-typescript-react-demo.netlify.app](https://ironmanrust-typescript-react-demo.netlify.app)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b8b1511d-829b-42b7-8995-8a06584a0096/deploy-status)](https://app.netlify.com/sites/ironmanrust-typescript-react-demo/deploys)
 

@@ -1,22 +1,22 @@
 {
     "local": {
         "environment": "Local",
-        "domain": "l-ironmanrust-typescript-react-demo.netlify.com"
+        "domain": "l-ironmanrust-typescript-react-demo.netlify.app"
     },
     "development": {
         "environment": "Development",
-        "domain": "d-ironmanrust-typescript-react-demo.netlify.com"
+        "domain": "d-ironmanrust-typescript-react-demo.netlify.app"
     },
     "qa": {
         "environment": "QA",
-        "domain": "q-ironmanrust-typescript-react-demo.netlify.com"
+        "domain": "q-ironmanrust-typescript-react-demo.netlify.app"
     },
     "stage": {
         "environment": "Stage",
-        "domain": "s-ironmanrust-typescript-react-demo.netlify.com"
+        "domain": "s-ironmanrust-typescript-react-demo.netlify.app"
     },
     "production": {
         "environment": "Production",
-        "domain": "ironmanrust-typescript-react-demo.netlify.com"
+        "domain": "ironmanrust-typescript-react-demo.netlify.app"
     }
 }
